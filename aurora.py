@@ -1,4 +1,7 @@
-#Listas Globais
+# Bibliotecas
+import math
+
+# Listas Globais
 leituras = []
 
 # Descrição do Projeto
@@ -35,7 +38,7 @@ def validar_float(msg, min, max):
             print(f"Inválido. Digite um valor entre {min} e {max}.")
     
 
-#Painel
+#Painel de Status
 def painel_status():
     print("■" * 40)
     if len(leituras) == 0:
@@ -50,12 +53,35 @@ def painel_status():
     input("Pressione qualquer tecla para voltar...")
     print("■" * 40)
 
+# Cálculo de Autonomia
+def calcular_autonomia(e0, k = 0.067, eseg = 48):
+    if e0 <= eseg:
+        return 0
+    return (1/k) * math.log(e0/eseg)
+
+## Submenu de Autonomia
+
+def opcao_autonomia():
+    print("■" * 40)
+    e0 = validar_float("Reserva atual (0 a 500kWh): ", 0, 500)
+    taxa = validar_float("Taxa de consumo (0 a 50kWh): ", 0, 50)
+    horas = calcular_autonomia(e0, k = taxa/e0 if e0 > 0 else 0.067)
+    
+    print(f"Autonomia estimada: {horas:.1f} horas")
+    print(f"Noite lunar dura: ~336 horas")
+
+    if horas < 336:
+        print("ATENÇÃO: Reserva insuficiente para a noite inteira!")
+        
+    input("Pressione qualquer tecla para voltar...")
+    print("■" * 40)
 
 # Menu Principal
 while True:
     print("AURORA - Console da Base XX")
-    print("1- Descrição \n2- Registrar \n3- Painel \n4- Autonomia")
-    print("5- Relatório \n6- Simular \n0- Sair")
+    print("1- Descrição da Solução\n2- Registrar Leitura\n3- Painel de Status")
+    print("4- Calcular Autonomia\n5- Relatório de Comando\n6- Simular Cenário")
+    print("0- Sair")
 
     opcao = input("Opção: ")
 
