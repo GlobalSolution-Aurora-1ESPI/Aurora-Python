@@ -24,7 +24,7 @@ def registrar_leitura():
     input("Pressione qualquer tecla para voltar...")
     print("■" * 40)
 
-
+## Validação de entradas numéricas
 def validar_float(msg, min, max):
     while True:
         
@@ -34,6 +34,21 @@ def validar_float(msg, min, max):
         else:
             print(f"Inválido. Digite um valor entre {min} e {max}.")
     
+
+#Painel
+def painel_status():
+    print("■" * 40)
+    if len(leituras) == 0:
+        print("Nenhuma leitura registrada.")
+        print("Diriga-se a opção 2 para registrar leituras.")
+    else:
+        ultimaLeitura = leituras[-1]
+        print(f"Estado: {ultimaLeitura["estado"]}")
+        print(f"Energia: {ultimaLeitura["energia"]}kWh")
+        print(f"Temperatura: {ultimaLeitura["temp"]}°C")
+        print(f"Total de leituras: {len(leituras)}")
+    input("Pressione qualquer tecla para voltar...")
+    print("■" * 40)
 
 
 # Menu Principal
@@ -50,7 +65,7 @@ while True:
         case "2":
             registrar_leitura()
         case "3":
-            print(leituras)
+            painel_status()
         case "4":
             print("Autonomia")
         case "5":
