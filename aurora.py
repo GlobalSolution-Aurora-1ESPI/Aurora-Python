@@ -72,7 +72,7 @@ def opcao_autonomia():
 
     if horas < 336:
         print("ATENÇÃO: Reserva insuficiente para a noite inteira!")
-        
+
     input("Pressione qualquer tecla para voltar...")
     print("■" * 40)
 
@@ -93,7 +93,7 @@ while True:
         case "3":
             painel_status()
         case "4":
-            print("Autonomia")
+            opcao_autonomia()
         case "5":
             print("Relatório")
         case "6":
