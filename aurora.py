@@ -76,11 +76,38 @@ def opcao_autonomia():
     input("Pressione qualquer tecla para voltar...")
     print("■" * 40)
 
+# Relatório de Consumo
+def relatorio_consumo():
+    print("■" * 40)
+    if len(leituras) == 0:
+        print("Nenhuma leitura registrada.")
+        print("Diriga-se a opção 2 para registrar leituras.")
+    else:
+        leituras_energia = []
+
+        for leitura in leituras:
+            leituras_energia.append(leitura["energia"])
+
+        total = sum(leituras_energia)
+        media = total / len(leituras_energia)
+        maximo = max(leituras_energia)
+        minimo = min(leituras_energia)
+
+        print(f"Número de Leituras: {len(leituras_energia)}")
+        print(f"Energia Total: {total:.1f}kWh")
+        print(f"Energia Média: {media:.1f}kWh")
+        print(f"Energia Máxima: {maximo:.1f}kWh")
+        print(f"Energia Mínima: {minimo:.1f}kWh")
+        
+    input("Pressione qualquer tecla para voltar...")
+    print("■" * 40)
+    
+
 # Menu Principal
 while True:
     print("AURORA - Console da Base XX")
     print("1- Descrição da Solução\n2- Registrar Leitura\n3- Painel de Status")
-    print("4- Calcular Autonomia\n5- Relatório de Comando\n6- Simular Cenário")
+    print("4- Calcular Autonomia\n5- Relatório de Consumo\n6- Simular Cenário")
     print("0- Sair")
 
     opcao = input("Opção: ")
@@ -95,7 +122,7 @@ while True:
         case "4":
             opcao_autonomia()
         case "5":
-            print("Relatório")
+            relatorio_consumo()
         case "6":
             print("Simular")
         case "0":
