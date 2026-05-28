@@ -65,7 +65,8 @@ def opcao_autonomia():
     print("■" * 40)
     e0 = validar_float("Reserva atual (0 a 500kWh): ", 0, 500)
     taxa = validar_float("Taxa de consumo (0 a 50kWh): ", 0, 50)
-    horas = calcular_autonomia(e0, k = taxa/e0 if (e0 > 0) and (taxa > 0) else 0.067)
+    horas = calcular_autonomia(e0, k = taxa/e0 if (e0 > 0) and (taxa > 0)
+                                else 0.067)
     
     print(f"Autonomia estimada: {horas:.1f} horas")
     print(f"Noite lunar dura: ~336 horas")
